@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     },
   },
   buildModules: [
-    // '@pinia/nuxt',
+    '@pinia/nuxt',
     '@nuxtjs/tailwindcss'
   ]
 })
