@@ -1,10 +1,12 @@
 <template>
-  <div @click="mainStore.addToTeam(pokemon)">
-    <Popper :disabled="isDisabled" arrow hover placement="right" disablePortal content="Add to team" zIndex=9999>
-      <div class="inline-flex items-center p-1 rounded-full text-white">
-        <PlusCircleIconSolid class="h-8 w-8 fill-blue-600 hover:fill-blue-700" aria-hidden="true" />
-      </div>
-    </Popper>
+  <div>
+    <div class="inline-flex items-center p-1 rounded-full text-white">
+      <Popper :disabled="isDisabled" arrow hover placement="right" disablePortal content="Add to team" zIndex=9999>
+        <div @click="mainStore.addToTeam(pokemon)">
+          <PlusCircleIconSolid class="h-8 w-8 fill-blue-600 hover:fill-blue-700" aria-hidden="true" />
+        </div>
+      </Popper>
+    </div>
   </div>
 </template>
 <script setup lang="ts">

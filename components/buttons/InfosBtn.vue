@@ -1,11 +1,11 @@
 <template>
-  <NuxtLink :to="`/details-${pokemon.name.toLowerCase()}`">
-    <Popper :disabled="isDisabled" arrow hover placement="left" disablePortal content="More infos" zIndex=9999>
-      <span class="inline-flex items-center p-1 rounded-full text-white">
+  <Popper :disabled="isDisabled" arrow hover placement="left" disablePortal content="More infos" zIndex=9999>
+    <span class="inline-flex items-center p-1 rounded-full text-white">
+      <NuxtLink :to="`/details-${pokemon.name.toLowerCase()}`">
         <InformationCircleIconSolid class="h-8 w-8 fill-blue-600 hover:fill-blue-700" aria-hidden="true" />
-      </span>
-    </Popper>
-  </NuxtLink>
+      </NuxtLink>
+    </span>
+  </Popper>
 </template>
 
 <script setup lang="ts">
