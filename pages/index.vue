@@ -45,7 +45,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { PlusSmIcon as PlusSmIconOutline } from '@heroicons/vue/outline'
+import { PlusSmIcon as PlusSmIconOutline } from '@heroicons/vue/outline/index.js'
 import { useMainStore } from '~~/stores/main'
 import { getPokemonBasic } from '../helper'
 import { Pokemon } from '~~/stores/main'
