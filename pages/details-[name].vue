@@ -42,12 +42,15 @@
 import { useMainStore } from '~~/stores/main';
 import AddToTeamBtn from '~~/components/buttons/AddToTeamBtn.vue';
 import { Pokemon } from  '~~/stores/main';
+
+onMounted(() => mainStore.team = JSON.parse(localStorage.getItem("team") || "[]"))
+
 const route = useRoute()
 const name = route.params.name
 const mainStore = useMainStore()
 
 const { data: rawData, error } = await useFetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-
+// TODO: type api return
 const pokemonInfos = {
   id: { value: rawData.value?.id || '', description: '	The identifier for this resource.' },
   name: { value: rawData.value?.name || '', description: 'The name for this resource.' },

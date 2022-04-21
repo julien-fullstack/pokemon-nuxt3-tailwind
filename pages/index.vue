@@ -46,15 +46,17 @@
 </template>
 <script setup lang="ts">
 import { PlusSmIcon as PlusSmIconOutline } from '@heroicons/vue/outline'
-import { useMainStore } from '~~/stores/main';
+import { useMainStore } from '~~/stores/main'
 import { getPokemonBasic } from '../helper'
 import { Pokemon } from '~~/stores/main'
-import { Ref } from 'vue';
-import { useBreakpointTailwindCSS } from "vue-composable";
+import { Ref } from 'vue'
 import InfosBtn from '~~/components/buttons/InfosBtn.vue'
-import AddToTeamBtn from '~~/components/buttons/AddToTeamBtn.vue';
+import AddToTeamBtn from '~~/components/buttons/AddToTeamBtn.vue'
 
-const { current } = useBreakpointTailwindCSS()
+onMounted(() => {
+  console.log('mounted', localStorage.getItem("team"))
+  mainStore.team = JSON.parse(localStorage.getItem("team"))
+})
 
 const mainStore = useMainStore()
 

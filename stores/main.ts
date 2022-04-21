@@ -1,4 +1,4 @@
-import { Ref } from 'vue'
+import { Ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 import { useLayoutStore } from './layout'
 
@@ -17,6 +17,19 @@ export const useMainStore = defineStore('main', () => {
   const offset: Ref<Number> = ref(0)
   const team: Ref<Pokemon[]> = ref([])
   const modal: Ref<Boolean> = ref(false)
+
+  let num = 0
+  // EVERY CHANGE TO TEAM IS SAVED TO LOCAL STORAGE
+  watch(
+    team,
+    (teamVal) => {
+      if (num > 0) {
+        localStorage.setItem('team', JSON.stringify(teamVal))
+      }
+      num++
+    },
+    { deep: true }
+  )
 
   // ACTIONS
   const addToTeam = (pokemon: Pokemon) => {
