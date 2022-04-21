@@ -19,7 +19,7 @@ export const useMainStore = defineStore('main', () => {
   const modal: Ref<Boolean> = ref(false)
 
   let num = 0
-  // EVERY CHANGE TO TEAM IS SAVED TO LOCAL STORAGE
+  // EVERY CHANGE TO TEAM IS SAVED TO LOCAL STORAGE EXEPT THE FIRST TIME
   watch(
     team,
     (teamVal) => {

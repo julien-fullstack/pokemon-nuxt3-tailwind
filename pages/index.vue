@@ -54,7 +54,6 @@ import InfosBtn from '~~/components/buttons/InfosBtn.vue'
 import AddToTeamBtn from '~~/components/buttons/AddToTeamBtn.vue'
 
 onMounted(() => {
-  console.log('mounted', localStorage.getItem("team"))
   mainStore.team = JSON.parse(localStorage.getItem("team"))
 })
 
