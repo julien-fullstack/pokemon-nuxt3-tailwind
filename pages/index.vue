@@ -61,7 +61,7 @@ const mainStore = useMainStore()
 
 const pokemons: Ref<Pokemon[]> = ref([])
 let offset = 0
-const { data: firstPokemons, error } = await useFetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0')
+const { data: firstPokemons, error } = (await useFetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0')) as any
 
 firstPokemons?.value?.results?.forEach(
   pokemon => pokemons.value.push(getPokemonBasic(pokemon))
@@ -72,7 +72,7 @@ if (!error.value) {
 }
 
 const seeMore = async () => {
-  const { data, error } = await useFetch(`https://pokeapi.co/api/v2/pokemon?limit=100&offset=${offset}`)
+  const { data, error } = (await useFetch(`https://pokeapi.co/api/v2/pokemon?limit=100&offset=${offset}`)) as any
   if (!error.value) {
     data.value.results.forEach(pokemon => {
       pokemons.value.push(getPokemonBasic(pokemon))
