@@ -48,8 +48,8 @@
 </template>
 
 <script setup lang="ts">
-import { PlusSmIcon as PlusSmIconSolid } from '@heroicons/vue/solid'
-import { MinusSmIcon as MinusSmIconSolid } from '@heroicons/vue/solid'
+import { PlusSmIcon as PlusSmIconSolid } from '@heroicons/vue/solid/index.js'
+import { MinusSmIcon as MinusSmIconSolid } from '@heroicons/vue/solid/index.js'
 import { ArrowsExpandIcon } from '@heroicons/vue/outline/index.js'
 import { useMainStore } from '~~/stores/main';
 import draggable from 'vuedraggable'

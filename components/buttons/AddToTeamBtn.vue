@@ -11,7 +11,7 @@
 </template>
 <script setup lang="ts">
 import '@/assets/popper.css'
-import { PlusCircleIcon as PlusCircleIconSolid } from '@heroicons/vue/solid'
+import { PlusCircleIcon as PlusCircleIconSolid } from '@heroicons/vue/solid/index.js'
 import { Pokemon, useMainStore } from '~~/stores/main';
 import Popper from "vue3-popper";
 import { useBreakpointTailwindCSS } from 'vue-composable';

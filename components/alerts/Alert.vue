@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { CheckCircleIcon, XIcon } from '@heroicons/vue/solid'
+import { CheckCircleIcon, XIcon } from '@heroicons/vue/solid/index.js'
 import { useLayoutStore } from '~~/stores/layout';
 
 const layoutStore = useLayoutStore()

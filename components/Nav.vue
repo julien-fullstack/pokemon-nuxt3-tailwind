@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 import { Disclosure } from '@headlessui/vue'
-import { SearchIcon, UserGroupIcon } from '@heroicons/vue/solid'
+import { SearchIcon, UserGroupIcon } from '@heroicons/vue/solid/index.js'
 import { useMainStore } from '~~/stores/main'
 
 const mainStore = useMainStore()
