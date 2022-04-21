@@ -1,5 +1,5 @@
 <template>
-  <div :class="`rounded-md bg-${color()}-50 p-4 bg-white`">
+  <div :class="`rounded-md bg-${color()}-50 p-4`">
     <div class="flex">
       <div class="flex-shrink-0">
         <CheckCircleIcon :class="`h-5 w-5 text-${color()}-400`" aria-hidden="true" />
