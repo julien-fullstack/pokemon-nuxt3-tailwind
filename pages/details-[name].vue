@@ -4,18 +4,10 @@
       <img src="https://wallpaperaccess.com/full/1794017.png" alt="" class="w-full h-60 object-center object-cover" />
       <div class="absolute inset-0 bg-gradient-to-t from-white" />
     </div>
- <!-- position: absolute; 
-  left: 0; 
-  right: 0; 
-  margin-left: auto; 
-  margin-right: auto; 
-  width: 100px; /* Need a specific value to work */
-} -->
-    <div class="relative -mt-12 max-w-7xl mx-auto pb-16 px-4 sm:pb-24 sm:px-6 lg:px-8">
+
+    <div v-if="!errorComp" class="relative -mt-12 max-w-7xl mx-auto pb-16 px-4 sm:pb-24 sm:px-6 lg:px-8">
       <img class="absolute -top-40 left-0 right-0 ml-auto mr-auto w-48 h-48"
-        :src="mainStore.getSpriteUrl(pokemon.id.value)"
-        alt=""
-        />
+        :src="mainStore.getSpriteUrl(pokemon.id.value) || ''" alt="" />
 
       <div class="max-w-2xl mx-auto pt-20 text-center lg:max-w-4xl">
         <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Technical Specifications</h2>
@@ -32,23 +24,40 @@
         </div>
       </dl>
     </div>
+
+    <div v-else class="relative -mt-12 max-w-7xl mx-auto pb-16 px-4 sm:pb-24 sm:px-6 lg:px-8">
+      <img class="absolute -top-40 left-0 right-0 ml-auto mr-auto w-48 aspect-auto" src="~/assets/images/unown-question.png"
+        alt="" />
+
+      <div class="max-w-2xl mx-auto pt-20 text-center lg:max-w-4xl">
+        <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Pokemon doesn't exist</h2>
+        <NuxtLink to="/">
+          <p class="mt-4 text-gray-500">Go to Pokedex</p>
+        </NuxtLink>
+      </div>
+
+    </div>
   </div>
 </template>
-<script setup lang="ts">import { useMainStore } from '~~/stores/main';
-
-
+<script setup lang="ts">
+import { useLayoutStore } from '~~/stores/layout';
+import { useMainStore } from '~~/stores/main';
 const route = useRoute()
 const name = route.params.name
 const mainStore = useMainStore()
+const layoutStore = useLayoutStore()
+
 const { data: rawData, error } = await useFetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
 
 const pokemon = {
-  name: { value: rawData.value.name, description: 'The name for this resource.' },
-  id: { value: rawData.value.id, description: '	The identifier for this resource.' },
-  base_experience: { value: rawData.value.base_experience, description: 'The base experience gained for defeating this Pokémon.' },
-  height: { value: rawData.value.height, description: 'The height of this Pokémon in decimetres.' },
-  order: { value: rawData.value.order, description: 'Order for sorting. Almost national order, except families are grouped together.' },
-  weight: { value: rawData.value.weight, description: 'The weight of this Pokémon in hectograms.' },
+  name: { value: rawData.value?.name || '', description: 'The name for this resource.' },
+  id: { value: rawData.value?.id || '', description: '	The identifier for this resource.' },
+  base_experience: { value: rawData.value?.base_experience || '', description: 'The base experience gained for defeating this Pokémon.' },
+  height: { value: rawData.value?.height || '', description: 'The height of this Pokémon in decimetres.' },
+  order: { value: rawData.value?.order || '', description: 'Order for sorting. Almost national order, except families are grouped together.' },
+  weight: { value: rawData.value?.weight || '', description: 'The weight of this Pokémon in hectograms.' },
 }
+
+const errorComp = computed(() => !!error.value)
 
 </script>

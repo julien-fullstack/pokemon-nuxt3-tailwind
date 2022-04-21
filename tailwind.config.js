@@ -5,9 +5,12 @@ module.exports = {
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}"
   ],
-  theme: {
-    extend: {},
-  },
+  // to use dynamic classes with tailwind
+  safelist: [
+    {
+      pattern: /text-/
+    }
+  ],
   plugins: [
     require('@tailwindcss/forms')
   ],
