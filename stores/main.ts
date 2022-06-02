@@ -36,7 +36,11 @@ export const useMainStore = defineStore('main', () => {
     const layoutStore = useLayoutStore()
     layoutStore.resetAlerts()
 
-    const pokemonInState = team.value.findIndex(p => p.id === pokemon.id)
+    if (!team.value) {
+      team.value = []
+    }
+
+    const pokemonInState = team.value?.findIndex(p => p.id === pokemon.id)
     if (!isTeamFull.value) {
       if (pokemonInState === -1) {
         team.value.push({ ...pokemon, count: 1 })
